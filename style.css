@@ -1,0 +1,163 @@
+:root{
+    --num-color:#D8D9DB;
+    --num-hover: #edeff2;
+    --num-click: rgb(164, 161, 161);
+    --operator-color: #DF974C;
+    --operator-hover: #f2b06b;
+    --operator-click: #8d6437;
+    --result-color: black;
+    --result-text-color: white;
+    --num-text-color: black;
+    --operator-text-color: white;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.project-title{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: normal;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.calculator-wrapper{
+    width: 25%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "res res res res"
+    "c c back div"
+    "seven eight nine mul"
+    "four five six sub"
+    "one two three plus"
+    "zero zero zero eq"
+    ;
+    grid-column-gap: 2px;
+    column-gap: 2px;
+    grid-row-gap: 2px;
+    row-gap: 2px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 32px;
+    background-color: var(--result-color);
+}
+
+button {
+    font-size: inherit;
+    border: none;
+}
+
+.plain-button {
+    background-color: var(--num-color);
+    color: var(--num-text-color);
+}
+
+.plain-button:hover {
+    background-color: var(--num-hover);
+}
+
+.plain-button:active {
+    background-color: var(--num-click);
+}
+.accent-button {
+    background-color: var(--operator-color);
+    color: var(--operator-text-color);
+}
+
+.accent-button:hover {
+    background-color: var(--operator-hover);
+}
+
+.accent-button:active{
+    background-color: var(--operator-click);
+}
+.result{
+    grid-area: res;
+    aspect-ratio: 4;
+    background-color: var(--result-color);
+    /* The following flex code puts the result text vertical center and far right */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.result-text{
+    color: var(--result-text-color);
+    margin: 0.5rem;
+
+    /* The ff flex code ensures proper clipping to the left when text is too long */
+    display: flex;
+    justify-content: flex-end;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+.button-c{
+    grid-area: c;
+    /*aspect-ratio: 2;*/
+}
+
+.button-back{
+    grid-area: back;
+}
+
+.button-div{
+    grid-area: div;
+}
+
+.button-mult{
+    grid-area:mul;
+}
+
+.button-sub{
+    grid-area:sub;
+}
+
+.button-add{
+    grid-area:plus;
+}
+
+.button-eq{
+    grid-area:eq;
+}
+.button-9{
+    grid-area: nine;
+}
+.button-8{
+    grid-area: eight;
+}
+.button-7{
+    grid-area: seven;
+}
+
+.button-6{
+    grid-area: six;
+}
+.button-5{
+    grid-area: five;
+}
+.button-4{
+    grid-area: four;
+}
+
+.button-3{
+    grid-area: three;
+}
+.button-2{
+    grid-area: two;
+}
+.button-1{
+    grid-area: one;
+}
+
+.button-0{
+    grid-area: zero;
+    /*aspect-ratio: 3;*/
+}
+
+.square{
+    aspect-ratio: 1;
+}
