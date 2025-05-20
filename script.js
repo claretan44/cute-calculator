@@ -189,14 +189,77 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             else if (buttonText === '<-')
             {
-                calculator.screenText = 'STILL IMPLEMENTING';
                 /*TODO: implement this! Also check for error on screen!
-                if (!calculator.resultOnScreen){
-                    only allow back button when the answer is NOT being displayed
-                }
                     check the operatorEntered status, set to false
                     check if the screen will become blank
                 */
+               if (!calculator.screenBlank){
+                    /*don't do anything if there's nothing to erase */
+                    if (calculator.resultOnScreen){
+                        /*clear completely when the answer or an error is being displayed */
+                        if(calculator.errorOnScreen)
+                        {
+                            calculator.errorOnScreen = false;
+                        }
+                        calculator.resultOnScreen = false;
+                        calculator.screenText = '';
+                        calculator.screenBlank = true;
+                    }
+                    else{
+                        /* check for digits or operators that were entered, and lastly check if the screen becomes blank */
+                        if(calculator.operatorEntered)
+                        {
+                            /*handle it if a negative number is being waited for */
+                            if(calculator.negativeNumber)
+                            {
+                                calculator.negativeNumber = false;
+                                calculator.screenText = calculator.screenText.slice(0,-1);
+                                /* don't set operator entered to false automatically */
+                                const lastChar = calculator.screenText[(calculator.screenText.length - 1)];
+                                if (!calculator.operators.includes(lastChar))
+                                {
+                                    calculator.operatorEntered = false;
+                                }
+                            }
+                            else
+                            {
+                                calculator.operatorEntered = false;
+                                calculator.screenText = calculator.screenText.slice(0,-1);
+                            }
+                        }
+                        else
+                        {
+                            /*this assumes deleting a digit, 
+                            when doing this check if a negative number is being deleted */
+
+                            calculator.screenText = calculator.screenText.slice(0,-1);
+                            if(calculator.screenText.length > 0)
+                            {
+                                /* check for the operatorentered variable */
+                                const lastChar = calculator.screenText[(calculator.screenText.length - 1)];
+                                if(calculator.operators.includes(lastChar))
+                                {
+                                    calculator.operatorEntered = true;
+                                }
+                                /*check for a waiting negative number */
+                                if(calculator.screenText.length > 2)
+                                {
+                                    const secondToLastChar = calculator.screenText[(calculator.screenText.length - 2)];
+                                    if(lastChar === '-' && ['x','/'].includes(secondToLastChar))
+                                    {
+                                        calculator.negativeNumber = true;
+                                    }
+                                }
+                            }
+                            
+                        }
+                        if (calculator.screenText.length === 0)
+                        {
+                            calculator.screenBlank = true;
+                        }
+                    }
+               }
+               
             }
             else if (isDigit(buttonText))
             {
