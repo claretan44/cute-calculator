@@ -1,4 +1,17 @@
 :root{
+    --num-color:#ffe7e7;
+    --num-hover: #fce1e1;
+    --num-click: #e8bbbb;
+    --operator-color: #ffcccc;
+    --accent-operator-color: #fff4d0;
+    --operator-hover: #ffb4b4;
+    --operator-click: #e68787;
+    --result-color: white;
+    --result-text-color: #AB7232;
+    --num-text-color: #AB7232;
+    --operator-text-color: #AB7232;
+
+    /*
     --num-color:#D8D9DB;
     --num-hover: #edeff2;
     --num-click: rgb(164, 161, 161);
@@ -8,11 +21,15 @@
     --result-color: black;
     --result-text-color: white;
     --num-text-color: black;
-    --operator-text-color: white;
+    --operator-text-color: white; */
 }
 
 *{
     box-sizing:border-box;
+}
+
+body{
+    background-color: var(--num-color);
 }
 
 .project-title{
@@ -25,10 +42,11 @@
 .calculator-wrapper{
     /*width: 25%;*/
     width: min(320px,90%);
-    margin: auto;
+    margin: 2rem auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
+    "res res res res"
     "res res res res"
     "c c back div"
     "seven eight nine mul"
@@ -43,11 +61,17 @@
     font-family:'Courier New', Courier, monospace;
     font-size: 32px;
     background-color: var(--result-color);
+    padding: 1rem;
+    /*border: 2px solid black;*/
+    border-radius: 3%;
 }
 
 button {
     font-size: inherit;
+    font-family: Inter;
     border: none;
+    border-radius: 5%;
+    margin: 0.125rem;
 }
 
 .plain-button {
@@ -62,8 +86,21 @@ button {
 .plain-button:active {
     background-color: var(--num-click);
 }
-.accent-button {
+.operator-button {
     background-color: var(--operator-color);
+    color: var(--operator-text-color);
+}
+
+.operator-button:hover {
+    background-color: var(--operator-hover);
+}
+
+.operator-button:active{
+    background-color: var(--operator-click);
+}
+
+.accent-button {
+    background-color: var(--accent-operator-color);
     color: var(--operator-text-color);
 }
 
@@ -74,9 +111,10 @@ button {
 .accent-button:active{
     background-color: var(--operator-click);
 }
+
 .result{
     grid-area: res;
-    aspect-ratio: 4;
+    aspect-ratio: 3;
     background-color: var(--result-color);
     /* The following flex code puts the result text vertical center and far right */
     display: flex;
