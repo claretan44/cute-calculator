@@ -1,15 +1,17 @@
 :root{
     --num-color:#ffe7e7;
-    --num-hover: #fce1e1;
-    --num-click: #e8bbbb;
+    --num-hover: #ffcccc;
+    --num-click: #f9bfbf;
     --operator-color: #ffcccc;
     --accent-operator-color: #fff4d0;
-    --operator-hover: #ffb4b4;
-    --operator-click: #e68787;
+    --accent-operator-hover: #fcf6e3;
+    --accent-operator-click: #f6e9c5;
+    --operator-hover: #fed8d8;
+    --operator-click: #f9bfbf;
     --result-color: white;
-    --result-text-color: #AB7232;
-    --num-text-color: #AB7232;
-    --operator-text-color: #AB7232;
+    --result-text-color: #9a672d;
+    --num-text-color: #9a672d;
+    --operator-text-color: #9a672d;
 
     /*
     --num-color:#D8D9DB;
@@ -29,7 +31,12 @@
 }
 
 body{
-    background-color: var(--num-color);
+    /*background-color: var(--num-color);*/
+    background-image: linear-gradient(white, var(--num-color));
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .project-title{
@@ -58,17 +65,18 @@ body{
     column-gap: 2px;
     grid-row-gap: 2px;
     row-gap: 2px;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Lexend Giga', sans-serif;
     font-size: 32px;
-    background-color: var(--result-color);
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 1rem;
     /*border: 2px solid black;*/
     border-radius: 3%;
+    box-shadow: 0px 3px 15px #9a672d7b;
 }
 
 button {
     font-size: inherit;
-    font-family: Inter;
+    font-family: 'Lexend Giga', sans-serif;
     border: none;
     border-radius: 5%;
     margin: 0.125rem;
@@ -105,11 +113,11 @@ button {
 }
 
 .accent-button:hover {
-    background-color: var(--operator-hover);
+    background-color: var(--accent-operator-hover);
 }
 
 .accent-button:active{
-    background-color: var(--operator-click);
+    background-color: var(--accent-operator-click);
 }
 
 .result{
